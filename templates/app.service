@@ -1,0 +1,25 @@
+# Managed by linux-server-bootstrap. Local edits are overwritten on the next run.
+[Unit]
+Description={{APP_NAME}} application
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User={{APP_USER}}
+Group={{APP_USER}}
+WorkingDirectory={{APP_DIR}}
+EnvironmentFile=-/etc/{{APP_NAME}}.env
+ExecStart={{APP_CMD}}
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

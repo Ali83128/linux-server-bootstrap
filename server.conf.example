@@ -1,0 +1,37 @@
+# linux-server-bootstrap settings
+# Copy to server.conf, edit, then: sudo ./bootstrap.sh --config server.conf
+# Command-line flags override anything set here. The file is parsed, never
+# executed, and unknown keys are rejected.
+
+# Admin account (sudo, key-only SSH). Required.
+ADMIN_USER=deploy
+
+# Public key(s) for that account. Use one or both.
+SSH_KEY_FILE=./id_ed25519.pub
+# SSH_KEY_URL=https://github.com/YOUR-GITHUB-NAME.keys
+
+# SSH and firewall
+SSH_PORT=22
+ALLOW_PASSWORD_AUTH=no
+# Extra ports to open, comma separated: 3000,5432/tcp,60000:61000/udp
+EXTRA_PORTS=
+
+# System
+TIMEZONE=UTC
+# auto | 0 | 2G | 512M
+SWAP_SIZE=auto
+SKIP_UPGRADE=no
+
+# Web: Nginx reverse proxy in front of your app
+INSTALL_NGINX=yes
+APP_PORT=8000
+DOMAIN=
+ENABLE_CERTBOT=no
+EMAIL=
+
+# Extras
+INSTALL_DOCKER=no
+# systemd service for your app (leave APP_NAME empty to skip)
+APP_NAME=
+APP_CMD=
+APP_DIR=

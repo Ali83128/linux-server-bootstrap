@@ -1,0 +1,4 @@
+# Local settings may contain your domain, e-mail or key paths.
+server.conf
+*.log
+.DS_Store
